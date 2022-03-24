@@ -2,6 +2,8 @@
 const button1 = document.querySelector('#button1');
 const getAnimalsNumber = document.querySelector('input')
 
+const button2 = document.querySelector('#button2')
+
 button1.addEventListener('click', async () => {
     let number = getAnimalsNumber.value;    
     number = parseInt(number);
@@ -29,9 +31,15 @@ button1.addEventListener('click', async () => {
       showZoo(response); 
 })
 
+button2.addEventListener('click', () => {
+    window.open('zoo.html',"_self")
+  })
+
+
 function showZoo() { 
     document.getElementById('header').classList.add('hidden');
     document.getElementById('enterZoo').classList.remove('hidden');
     const node3 = document.createElement("span"); 
     document.getElementById('enterZooContainer').appendChild(node3).innerHTML = `Click the button to see your zoo.`
   }
+  
