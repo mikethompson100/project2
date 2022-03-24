@@ -25,6 +25,13 @@ button1.addEventListener('click', async () => {
           else {
             document.getElementById('h2').appendChild(node).innerHTML = (n + ", ")
           }  
-
-      }      
+      }     
+      showZoo(response); 
 })
+
+function showZoo() { 
+    document.getElementById('header').classList.add('hidden');
+    document.getElementById('enterZoo').classList.remove('hidden');
+    const node3 = document.createElement("span"); 
+    document.getElementById('enterZooContainer').appendChild(node3).innerHTML = `Click the button to see your zoo.`
+  }
