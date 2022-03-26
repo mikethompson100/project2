@@ -8,7 +8,7 @@ button1.addEventListener('click', async () => {
     let response = await axios.get(
         `https://zoo-animal-api.herokuapp.com/animals/rand/${number}`
       );
-      document.getElementById('h2').innerHTML = "This zoo has a ";
+      document.getElementById('h2').innerHTML = "Your zoo has a ";
       for(let i=0; i<number; i++) {
           const node = document.createElement("span");  
           n = response.data[i].name;
@@ -31,7 +31,7 @@ button1.addEventListener('click', async () => {
 
 function showZoo() { 
     document.getElementById('header').classList.add('hidden');
-    document.getElementById('enterZoo').classList.remove('hidden');
+    document.getElementById('zooInvitation').classList.remove('hidden');
     const node3 = document.createElement("span"); 
     document.getElementById('enterZooContainer').appendChild(node3).innerHTML = `Click the button to see your zoo.`
   }
