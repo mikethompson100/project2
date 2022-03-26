@@ -2,15 +2,12 @@
 const button1 = document.querySelector('#button1');
 const getAnimalsNumber = document.querySelector('input')
 
-const button2 = document.querySelector('#button2')
-
 button1.addEventListener('click', async () => {
     let number = getAnimalsNumber.value;    
     number = parseInt(number);
     let response = await axios.get(
         `https://zoo-animal-api.herokuapp.com/animals/rand/${number}`
       );
-      
       document.getElementById('h2').innerHTML = "This zoo has a ";
       for(let i=0; i<number; i++) {
           const node = document.createElement("span");  
@@ -29,17 +26,18 @@ button1.addEventListener('click', async () => {
           }  
       }     
       showZoo(response); 
+      setZooPageObject(response);
 })
-
-button2.addEventListener('click', () => {
-    window.open('zoo.html',"_self")
-  })
-
 
 function showZoo() { 
     document.getElementById('header').classList.add('hidden');
     document.getElementById('enterZoo').classList.remove('hidden');
     const node3 = document.createElement("span"); 
     document.getElementById('enterZooContainer').appendChild(node3).innerHTML = `Click the button to see your zoo.`
+  }
+
+  function setZooPageObject(response) {    
+    localStorage.setItem("object", JSON.stringify(response));    
+    return false;
   }
   
