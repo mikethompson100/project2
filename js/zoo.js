@@ -12,12 +12,18 @@ for(let i=0; i < totalAnimals; i++) {
     const nodeImg = document.createElement("img");    
     nodeImg.setAttribute("class", "animalImg");
 
+    const nodeInput = document.createElement('input');
+    nodeInput.setAttribute("type", "submit");
+    nodeInput.setAttribute("value", "Learn More");
+
     zooDisplay.appendChild(nodeDiv);
     nodeDiv.setAttribute("id", "container" + i)
     nodeDiv.appendChild(nodeDiv2);
     nodeDiv2.innerHTML = ("("+(i+1)+")" + " " + parsedZooData.data[i].name + ":<span class='br'>" + "[Latin name: " + parsedZooData.data[i].latin_name + "]</span>")
     
     nodeDiv.appendChild(nodeImg).setAttribute("src", parsedZooData.data[i].image_link)
+    
+    nodeDiv.appendChild(nodeInput)
 }
 
 
