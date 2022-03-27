@@ -7,11 +7,22 @@
     <title>Zoo page</title>
     <script defer src="js/zoo.js"></script>
     <style>
-        img {  width: 10%; }
+        #zooContainer { max-width: 500px;}
+        div[id^="container"] { border: 5px groove Green; display: block; padding: 5px; margin: 25px 5px; }
+        .animalTitle { font-size: 17px; color: Green; font-weight: bold; padding: 10px; }
+        .animalImg { width: 94%; padding: 10px; }
+        .br { padding: 5px 0 0 0; display: block; font-size: 14px; font-style: italic; }
     </style>
 </head>
 <body>
     <h1>Zoo page</h1>  
-    <h2></h2>  
+    <h2>
+        <form action="index.html">
+            <input type="submit" value="<= Leave the Zoo and start over" onClick="" />
+        </form>
+    </h2>
+    <div id="zooContainer">
+
+    </div>  
 </body>
 </html>

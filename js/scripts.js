@@ -3,41 +3,42 @@ const button1 = document.querySelector('#button1');
 const getAnimalsNumber = document.querySelector('input')
 
 button1.addEventListener('click', async () => {
-    let number = getAnimalsNumber.value;    
-    number = parseInt(number);
+    let totalAnimals = getAnimalsNumber.value;    
+    totalAnimals = parseInt(totalAnimals);
     let response = await axios.get(
-        `https://zoo-animal-api.herokuapp.com/animals/rand/${number}`
+        `https://zoo-animal-api.herokuapp.com/animals/rand/${totalAnimals}`
       );
       document.getElementById('h2').innerHTML = "Your zoo has a ";
-      for(let i=0; i<number; i++) {
+      for(let i=0; i < totalAnimals; i++) {
           const node = document.createElement("span");  
           n = response.data[i].name;
-          if (number === 1) {            
+          if (totalAnimals === 1) {            
             document.getElementById('h2').appendChild(node).innerHTML =(n + "! ");
           }
-          else if (i === number-1) {
+          else if (i === totalAnimals-1) {
             document.getElementById('h2').appendChild(node).innerHTML = ("& a " + n + " too!\n");            
           }
-          else if (i === number-2) {
+          else if (i === totalAnimals-2) {
             document.getElementById('h2').appendChild(node).innerHTML = (n + " ")          
           }
           else {
             document.getElementById('h2').appendChild(node).innerHTML = (n + ", ")
           }  
       }     
-      showZoo(response); 
-      setZooPageObject(response);
+      showZooList(response); 
+      setZooPageObject(response, totalAnimals);
 })
 
-function showZoo() { 
+function showZooList() { 
     document.getElementById('header').classList.add('hidden');
     document.getElementById('zooInvitation').classList.remove('hidden');
     const node3 = document.createElement("span"); 
     document.getElementById('enterZooContainer').appendChild(node3).innerHTML = `Click the button to see your zoo.`
   }
 
-  function setZooPageObject(response) {    
-    localStorage.setItem("object", JSON.stringify(response));    
+  function setZooPageObject(response, totalAnimals) {    
+    localStorage.setItem("zooData", JSON.stringify(response));   
+    localStorage.setItem("totalAnimals", totalAnimals);    
     return false;
   }
   

@@ -1,11 +1,23 @@
-const zooDisplay = document.getElementsByTagName("h2")[0]
-const incomingObject = window.localStorage.getItem("object");
-const parsedObject = JSON.parse(incomingObject);
+const zooDisplay = document.getElementById("zooContainer");
+const incomingZooData = window.localStorage.getItem("zooData");
+const totalAnimals = window.localStorage.getItem("totalAnimals");
+const parsedZooData = JSON.parse(incomingZooData);
 
+for(let i=0; i < totalAnimals; i++) {
+    const nodeDiv = document.createElement("div");
 
-for(let i=0; i<9; i++) {
-    const nodeDiv = document.createElement("div");  
-    const nodeImg = document.createElement("img");
-    zooDisplay.appendChild(nodeDiv).innerHTML = parsedObject.data[i].name + "<br/>";
-    zooDisplay.appendChild(nodeImg).setAttribute("src", parsedObject.data[i].image_link);
+    const nodeDiv2 = document.createElement("div");
+    nodeDiv2.setAttribute("class", "animalTitle");
+
+    const nodeImg = document.createElement("img");    
+    nodeImg.setAttribute("class", "animalImg");
+
+    zooDisplay.appendChild(nodeDiv);
+    nodeDiv.setAttribute("id", "container" + i)
+    nodeDiv.appendChild(nodeDiv2);
+    nodeDiv2.innerHTML = ("("+(i+1)+")" + " " + parsedZooData.data[i].name + ":<span class='br'>" + "[Latin name: " + parsedZooData.data[i].latin_name + "]</span>")
+    
+    nodeDiv.appendChild(nodeImg).setAttribute("src", parsedZooData.data[i].image_link)
 }
+
+
