@@ -7,20 +7,20 @@
     <title>Zoo page</title>
     <script defer src="js/zoo.js"></script>
     <style>
-        div[id^="container"] { min-height: 537px;float:left; border: 5px groove green; display: block; padding: 5px 5px 5px 0; margin: 25px 5px; background-color: #ddd; max-width: 280px;}
+        h1 {padding:0; margin: 0}
+        div[id^="container"] { position: relative; float:left; border: 5px groove green; display: block; padding: 5px 5px 5px 0; margin: 15px 5px; background-color: #ddd; max-width: 260px;}
         .animalTitle { font-size: 17px; color: Green; font-weight: bold; padding: 10px; }
         .animalImg { width: 94%; margin: 10px; border: 1px solid #000; }
         .br { padding: 5px 0 0 0; display: block; font-size: 14px; font-style: italic; }
-        input{ margin: 4px auto; display: block; font-size: 12px; font-weight: bold; color:lightgreen; background-color: black; padding: 5px;}
+        input{ position: absolute; bottom: 5px; right: 5px; margin: 4px auto; display: block; font-size: 12px; font-weight: bold; color:lightgreen; background-color: black; padding: 5px;}
+        #topInput { position: relative; }
     </style>
 </head>
 <body>
     <h1>Zoo page</h1>  
-    <h2>
         <form action="index.html">
-            <input type="submit" value="<= Leave the Zoo and start over" />
+            <input type="submit" id="topInput" value="<= Leave the Zoo and start over" />
         </form>
-    </h2>
     <div id="zooContainer">
 
     </div>  
