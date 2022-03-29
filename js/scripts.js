@@ -2,6 +2,8 @@
 const button1 = document.querySelector('#button1');
 const getAnimalsNumber = document.querySelector('input')
 
+localStorage.clear();
+
 button1.addEventListener('click', async () => {
     let totalAnimals = getAnimalsNumber.value;    
     totalAnimals = parseInt(totalAnimals);
