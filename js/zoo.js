@@ -3,43 +3,38 @@ const incomingZooData = window.localStorage.getItem("zooData");
 const totalAnimals = window.localStorage.getItem("totalAnimals");
 const parsedZooData = JSON.parse(incomingZooData);
 
-
-const LearnMoreFunction = (nodeDiv, parsedZooData, i) => {    
-    const learnMoreUL = document.createElement("ul")
-    nodeDiv.appendChild(learnMoreUL);
+// output animal details to screen
+const outputAnimalDetails = (nodeDiv, parsedZooData, i) => {    
+    const showDetailsUL = document.createElement("ul")
+    nodeDiv.appendChild(showDetailsUL);
             const learnMoreLI1 = document.createElement("li")
             const learnMoreLI2 = document.createElement("li")
             const learnMoreLI3 = document.createElement("li")
             const learnMoreLI4 = document.createElement("li")
-            learnMoreUL.appendChild(learnMoreLI1).innerHTML = "Lifespan: " + parsedZooData.data[i].lifespan
-            learnMoreUL.appendChild(learnMoreLI2).innerHTML = "Habitat: " + parsedZooData.data[i].habitat
-            learnMoreUL.appendChild(learnMoreLI3).innerHTML = "Diet: " + parsedZooData.data[i].diet
-            learnMoreUL.appendChild(learnMoreLI4).innerHTML = "Geo Range: " + parsedZooData.data[i].geo_range
+            showDetailsUL.appendChild(learnMoreLI1).innerHTML = "Lifespan: " + parsedZooData.data[i].lifespan
+            showDetailsUL.appendChild(learnMoreLI2).innerHTML = "Habitat: " + parsedZooData.data[i].habitat
+            showDetailsUL.appendChild(learnMoreLI3).innerHTML = "Diet: " + parsedZooData.data[i].diet
+            showDetailsUL.appendChild(learnMoreLI4).innerHTML = "Geo Range: " + parsedZooData.data[i].geo_range
 }
 
+// main function
 for(let i=0; i < totalAnimals; i++) {
     const nodeDiv = document.createElement("div");
     const nodeDiv2 = document.createElement("div"); nodeDiv2.setAttribute("class", "animalTitle");
     const nodeImg = document.createElement("img"); nodeImg.setAttribute("class", "animalImg");
-    const nodeInput = document.createElement('input'); nodeInput.setAttribute("type", "submit"); nodeInput.setAttribute("value", "Learn More");
 
     zooDisplay.appendChild(nodeDiv); nodeDiv.setAttribute("id", "container" + i)
     nodeDiv.appendChild(nodeDiv2); nodeDiv2.innerHTML = ("("+(i+1)+")" + " " + parsedZooData.data[i].name + ":<span class='br'>" + "[Latin name: " + parsedZooData.data[i].latin_name + "]</span>")
     nodeDiv.appendChild(nodeImg).setAttribute("src", parsedZooData.data[i].image_link)
-    nodeDiv.appendChild(nodeInput)
-    nodeInput.setAttribute("class", "inputClass")
-    
-    const inputs = document.querySelectorAll('.inputClass');
-    LearnMoreFunction(nodeDiv, parsedZooData, i);
-/*     inputs[i].addEventListener('click', () => {
-    /// toggle show / hide
-    });  */
+
+    outputAnimalDetails(nodeDiv, parsedZooData, i);
 }
 
-
+// alters image sizes/layout after page loads
 document.addEventListener("DOMContentLoaded", function() {
     const allImgs = document.querySelectorAll('.animalImg')   
 
+    // give the images time to load with delay
     setTimeout(function(){
         computeAnimalBoxHeight();
     }, 5000);
